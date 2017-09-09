@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var time;
+			function demo(){
+				var d=new Date();
+				var str=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+				document.getElementById("span").innerText=str;
+				time=setTimeout("demo()",1000);
+			}
+			
+			function demo1(){
+				if(time!=undefined){
+					clearTimeout(time);
+				}
+			}
+		</script>
+	</head>
+	<body onload="demo();" onunload="demo1()">
+		<span id="span" style="display: block; margin-left: auto; margin-right: 10px; width: 160px; height: 25px; border: solid 1px;"></span>
+	</body>
+</html>

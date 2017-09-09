@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#ok").click(function(){
+			$.post("saveServlet",{bookName:$("#bookName").val(),bookAuthor:$("#bookAuthor").val(),
+								bookPrice:$("#bookPrice").val(),bookInfo:$("#bookInfo").val()},function(data){
+									if(data==1){
+										location.href="index.html";
+									}
+								});
+			
+		});
+	});
+</script>
+</head>
+<body>
+	名称:<input type="text" name="bookName" id="bookName"><br/>
+	作者:<input type="text" name="bookAuthor" id="bookAuthor"><br/>
+	价格:<input type="text" name="bookPrice" id="bookPrice"><br/>
+	信息:<input type="text" name="bookInfo" id="bookInfo"><br/>
+	<button type="button" id="ok">确定</button>
+</body>
+</html>

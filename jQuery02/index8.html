@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				$("#button").click(function(){
+					$("div").stop();
+				});
+				
+				$("div").animate({left:"700px",top:"500px;"},3000);
+				$("div").animate({opacity:"0.1"},1000);
+				$("div").animate({width:"50px",height:"50px"},2000);
+				$("div").animate({opacity:"1"},1000);
+				$("div").animate({width:"200px",height:"200px"},2000);
+				$("div").animate({left:"10px",top:"10px;"},3000);
+				
+			});
+		</script>
+	</head>
+	<body>
+		
+		
+		<div style="position: absolute; top:10px; left:10px; width: 200px; height: 200px; border: solid 1px;"></div>
+		
+		<button type="button" style="margin-top: 300px;" id="button">按钮</button>
+	</body>
+</html>

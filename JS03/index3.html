@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function keyDownDemo(){
+				//返回当前控件按下的键盘的code(ascii)
+				var code=event.keyCode;
+				//alert(code);
+				if(!((code==8) || (code>=48 && code<=57) || (code>=96 && code<=105))){
+					event.returnValue=false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		年龄:<input type="text" name="userAge" id="userAge" onkeydown="keyDownDemo();"/>
+	</body>
+</html>

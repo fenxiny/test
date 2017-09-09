@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- id="当前实力在spring容器中的key 唯一标识"
+	     class="当前bean的全类名"
+	     abstract="true" 表示当前类的是一个抽象类 那么spring容器在初始化bean容器不会去创建当前类的实力
+	     depends-on="" 告诉Springbean容器当前的实例依赖另外一个实例 创建当前类的实力的时候必须先去创建依赖的bean
+	     destroy-method="方法名" 当spring销毁当前bean的实例的时候调用的方法
+	     factory-bean="" 创建当前对象的工厂
+	     factory-method="方法名" 工厂的方法
+	     scope="prototype" 创建实例的类型 prototype(getBean返回一个新的对象) singleton 多次通过spring getBean 获得的是同一个对象-->
+	<bean id="userDao" class="com.hellojava.dao.impl.UserDao"></bean>
+	
+	<bean id="userService" class="com.hellojava.business.impl.UserService">
+		<!-- index 按照参数的顺序  name 按照参数的名称  type 按照参数的类型 -->
+		<constructor-arg type="com.hellojava.dao.IUserDao">
+			<ref bean="userDao"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="student" class="com.hellojava.demo.Student">
+		<property name="stuId" value="1"></property>
+		<property name="stuName" value="admin"></property>
+		<property name="stuAge" value="22"></property>
+		<property name="stuSS">
+			<array>
+				<value>admin1</value>
+				<value>admin2</value>
+				<value>admin3</value>
+				<value>admin4</value>
+				<value>admin5</value>
+			</array>
+		</property>
+	</bean>
+	
+	<bean id="c" class="com.hellojava.demo.Cla">
+		<property name="stuList">
+			<list>
+				<bean class="com.hellojava.demo.Student">
+					<property name="stuId" value="1"></property>
+					<property name="stuName" value="admin1"></property>
+					<property name="stuAge" value="22"></property>
+					<property name="stuSS">
+						<array>
+							<value>admin1</value>
+							<value>admin2</value>
+							<value>admin3</value>
+							<value>admin4</value>
+							<value>admin5</value>
+						</array>
+					</property>
+				</bean>
+				<bean class="com.hellojava.demo.Student">
+					<property name="stuId" value="2"></property>
+					<property name="stuName" value="admin1"></property>
+					<property name="stuAge" value="22"></property>
+					<property name="stuSS">
+						<array>
+							<value>admin1</value>
+							<value>admin2</value>
+							<value>admin3</value>
+							<value>admin4</value>
+							<value>admin5</value>
+						</array>
+					</property>
+				</bean>
+				<bean class="com.hellojava.demo.Student">
+					<property name="stuId" value="2"></property>
+					<property name="stuName" value="admin2"></property>
+					<property name="stuAge" value="22"></property>
+					<property name="stuSS">
+						<array>
+							<value>admin1</value>
+							<value>admin2</value>
+							<value>admin3</value>
+							<value>admin4</value>
+							<value>admin5</value>
+						</array>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

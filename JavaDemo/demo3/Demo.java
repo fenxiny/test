@@ -1,0 +1,137 @@
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+public class Demo 
+{
+	/*
+	public static void main(String[] args) 
+	{
+		/*
+		int result=0;
+		for(int i=0,num=2;i<1500;){
+			if(num%2==0 || num%3==0 || num%5==0){
+				result=num;
+				i++;
+			}
+			num++;
+		}
+		System.out.println(result);
+	
+
+		int[] a={1,2,3,4,5,6,7};
+		System.out.println(a);
+	}
+	
+
+	 static int[] arr=new int[10];
+	 public static void main(String[] args){
+		System.out.println(arr[1]);
+	 }
+
+	*/
+
+	public static void main(String[] args){
+		/*
+		int[] num={1,3,5,7,9,11,13,15,17,19};
+		int[] nums=new int[num.length];
+		for(int i=num.length-1,j=0;i>=0;i--,j++){
+			nums[j]=num[i];
+		}
+
+		for(int n : nums){
+			System.out.println(n);
+		}
+		
+	
+		int length;
+		Scanner input=new Scanner(System.in);
+		length=input.nextInt();
+		Student[] students=new Student[length];
+		for(int i=0;i<length;i++){
+			Student s=new Student();
+			System.out.println("请输入第"+(i+1)+"个学生的姓名:");
+			s.setStuName(input.next());
+			System.out.println("请输入第"+(i+1)+"个学生的成绩:");
+			s.setStuScore(input.nextDouble());
+			students[i]=s;
+		}
+
+		for(int i=0;i<students.length;i++){
+			for(int j=0;j<students.length-i-1;j++){
+				if((students[j].getStuScore())<(students[j+1].getStuScore())){
+					Student s=students[j];
+					students[j]=students[j+1];
+					students[j+1]=s;
+				}
+			}
+		}
+
+		for(Student s : students){
+			System.out.println(s.getStuName() );
+		}
+
+
+		int[] nums={120,200,11,66,22,44,88,100};
+		int n=nums[0];
+		int index=0;
+		for(int i=1;i<nums.length;i++){
+			if(n>nums[i]){
+				n=nums[i];
+				index=i;
+			}
+		}
+
+		System.out.println(index);
+
+		
+
+		int oldArr[]={1,3,4,5,0,0,6,6,0,5,4,7,6,7,0,5};
+		int[] newArr;
+		int index=0;
+		for(int i=0;i<oldArr.length;i++){
+			if(oldArr[i]!=0){
+				index++;
+			}
+		}
+
+		newArr=new int[index];
+
+		for(int i=0,j=0;i<oldArr.length;i++){
+			if(oldArr[i]!=0){
+				newArr[j]=oldArr[i];
+				j++;
+			}
+		}
+
+		for(int o : newArr){
+			System.out.println(o);
+		}
+
+		*/
+
+		int[] num1={1,7,9,11,13,15,17,19};
+		int[] num2={2,4,6,8,10};
+		int[] num3=new int[num1.length+num2.length];
+		for(int i=0;i<num3.length;i++){
+			if(i<num1.length){
+				num3[i]=num1[i];
+			}else{
+				num3[i]=num2[i-num1.length];
+			}
+		}
+
+		for(int i=0;i<num3.length;i++){
+			for(int j=0;j<num3.length-1-i;j++){
+				if(num3[j]>num3[j+1]){
+					int temp=num3[j];
+					num3[j]=num3[j+1];
+					num3[j+1]=temp;
+				}
+			}
+		}
+
+		for(int n : num3){
+			System.out.println(n);
+		}
+	}
+}

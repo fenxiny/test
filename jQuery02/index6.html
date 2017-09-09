@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				//on("事件的类型",function(){})绑定事件
+				$("#button1").click(function(){
+//					$(":text").on("focus",function(){
+//						$(this).val("你好世界");
+//					});
+
+					$(":text").bind("focus",function(){
+						$(this).val("你好世界");
+					});
+				});
+				
+				$("#button2").click(function(){
+					//解绑事件
+					//$(":text").off("focus");
+					
+					$(":text").unbind("focus");
+				});
+				
+				$("#button3").click(function(){
+					$(":text").one("focus",function(){
+						//只绑定一次事件
+						$(this).val("helloworld");
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="button" id="button1" value="focus" />
+		<input type="button" id="button2" value="unfocus" />
+		<input type="button" id="button3" value="one" />
+	</body>
+</html>

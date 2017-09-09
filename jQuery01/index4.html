@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#button").click(function(){
+					//父元素下的所有子元素(得到form下所有的lable)(注意需要标签是包含关系)(只能获得直接子元素)
+					//alert($("form label").length);
+					//alert($("form > label").length);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+			<label>用户名</label>
+			<label>密码</label>
+			<span>
+				<lable>hello</lable>
+			</span>
+		</form>
+		
+		<button type="button" id="button">按钮</button>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#button").click(function(){
+					//Class 选择器
+					//alert($(".text").length);
+					//全部(当前页面的所有元素)
+					//alert($("*").length);
+					
+					alert($("#text , .text , #button").length);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="text" class="text" />
+		<input type="text" class="text" />
+		<input type="text" class="text" />
+		<input type="text" class="text" />
+		<input type="text" id="text" />
+		<button id="button">按钮</button>
+	</body>
+</html>

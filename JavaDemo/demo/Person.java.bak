@@ -1,0 +1,8 @@
+package demo;
+public class Person 
+{
+	int show(){
+		System.out.println("Person µÄ show()");
+		return 1;
+	}
+}

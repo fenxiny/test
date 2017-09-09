@@ -1,0 +1,65 @@
+package demo1;
+public class Test1 
+{
+	public void show(Object str){
+		System.out.println(str);
+	}
+
+
+	public static void main(String[] args) 
+	{
+		//Test1 t=new Test1();
+		//t.show(new Demo());
+
+		//抽象
+		//封装
+		//继承
+		//多态
+
+		//Object obj=new Demo();
+
+		//int i=(int)10.22;
+
+		//double d=10;
+
+		//Test1 tt=new Demo();
+		//Java 程序分为 1:编译时错误(语法错误) 2:运行时错误(异常) 
+		//产生异常
+		//Demo dd=(Demo)new Object();
+
+		//上层对象可以指向下层类的空间
+
+		//上层的对象的方法  下层对象的方法
+		//多态 上层对象指向的下层空间(上层对象的方法为准(上层对象有的方法才能调用))
+		//确保调用都是存在
+		//Object obj=new Test1();
+		//obj.show();
+
+		//Test1 tt=new Object();
+		//tt.show();
+
+		//Object obj=new Test1();
+
+		//Test1 t=new Test1();
+		//t.method(对象都能传递);
+
+
+		
+		Student s=new Student();
+		Student s1=new Student();
+		//s==s1 s和s1存储的地址是不是一样
+	}
+
+	public boolean equals(Object obj){
+		
+	}
+
+	//参数化多态
+	public void method(Object obj){
+		
+	}
+	//返回值多态
+	public Object getInstance(){
+		return new Test1();
+	}
+}

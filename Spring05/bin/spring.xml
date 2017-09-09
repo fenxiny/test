@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	<bean id="aa" class="com.hellojava.demo.A"></bean>
+
+	<bean id="a1" class="com.hellojava.demo.A1"></bean>
+
+	<bean id="b" class="com.hellojava.demo1.B"></bean>
+	<!-- @autowire 工厂类 (注解注入的驱动类) 
+		 @Autowired 自动注入的注解类 (私有的属性不需要定义setget方法) 默认按照byName注入 如果byName找不到对应的ID bean的时候
+		 就会按照byType 自动注入 找到两个
+		 @Qualifier 配合 @Autowired 注解使用 @Autowired 自动注入 @Qualifier 进一步说明名称(把哪一个ID注入到当前的bean的属性)
+		 
+		 @Resource(type=A.class) @Resource(name="a1") 可以按照类型和 type两种配置
+		 //PostConstruct 注解兼容 init-method 配置
+		   @PostConstruct
+		   
+		 //PreDestroy 注解兼容 destroy-method 配置
+		   @PreDestroy
+		 -->
+	<!-- 配置注解的驱动(导入所有的注解需要用到的驱动类) -->
+	<context:annotation-config/>
+	
+</beans>

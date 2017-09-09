@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#Id").click(function(){
+					$("#tr2").insertBefore($("#tr1"));
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<table border="1" width="600">
+			<tr>
+				<td id="Id">ID</td>
+				<td>Name</td>
+				<td>Sex</td>
+				<td>Age</td>
+			</tr>
+			<tr id="tr1">
+				<td>1</td>
+				<td>张三1</td>
+				<td>男</td>
+				<td>22</td>
+			</tr>
+			<tr id="tr2">
+				<td>12</td>
+				<td>张三2</td>
+				<td>女</td>
+				<td>34</td>
+			</tr>
+			<tr>
+				<td>33</td>
+				<td>张三</td>
+				<td>男</td>
+				<td>22</td>
+			</tr>
+		</table>
+	</body>
+</html>

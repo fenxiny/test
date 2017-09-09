@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function demo(){
+				//self 窗口对象 当前自己窗口
+				//self.close();
+				//self.document.bgColor="#00ff00";
+				//this 窗口对象 当前自己窗口
+				//this.close();
+				//opener A open 打开 B  在B中 opener --> A
+				//opener.document.bgColor="#0000ff";
+			}
+		</script>
+	</head>
+	<body>
+		<h1>inner</h1>
+		<input type="button" value="inner按钮" onclick="demo();"/>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="constructor"
+	default-init-method=""
+	default-destroy-method="">
+	<!-- default-init-method 当前xml文件中所有的bean的默认的初始化的方法(每个bean都需要存在当前的初始化的方法)
+	     default-destroy-method 当前xml文件中所有的bean的默认的销毁的方法 -->
+	<!-- default-autowire 说明当前spring.xml文件中所有的bean的依赖的注入(DI)
+	         默认的方式 1:byName 当前使用的是属性名称和bean的ID的名称一致则自动注入
+	             2:no 不使用任何的自动注入的方法(default 是一致的)
+	             3:byType 使用类型自动匹配注入(如果依赖的关系是接口 那么依赖的接口又出现多个实现类 )
+	             4:constractor 构造自动注入(默认按照byName(构造方法的参数名称和bean的ID匹配  名称匹配不上则按照byType匹配)) -->
+	<bean id="aaa" class="com.hellojava.demo.A"></bean>
+	
+	<bean id="aa" class="com.hellojava.demo.A1"></bean>
+	
+	<bean id="b" class="com.hellojava.demo.B"></bean>
+	
+	<!-- DI 方式(1:getset  2:constractor 3:default-autowire) 4:注解 -->
+</beans>

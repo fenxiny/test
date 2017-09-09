@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.hellojava.mybatis.dao.IClassDao">
+	<insert id="save" parameterType="class">
+		insert into class values(default,#{className})
+	</insert>
+	
+	<resultMap type="class" id="classResult">
+		<id property="classId" column="classId"/>
+		<result property="className" column="className"/>
+		<!-- collectio 映射关联属性(关联属性是一个集合) 
+			ofType="当前集合中的元素的类型" List<Student> -->
+		<collection property="stuList" ofType="student" 
+			select="loadStudentByClass" column="classId">
+			<id property="stuId" column="stuId"/>
+			<result property="stuName" column="stuName"/>
+			<result property="stuSex" column="stuSex"/>
+			<result property="stuAge" column="stuAge"/>
+		</collection>
+	</resultMap>
+	
+	<select id="loadAll" resultMap="classResult">
+		select * from class
+	</select>
+	
+	<select id="loadStudentByClass" resultType="student" parameterType="int">
+		select * from student where cid=#{classId}
+	</select>
+	
+</mapper>

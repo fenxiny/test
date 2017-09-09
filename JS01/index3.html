@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#spanDate{
+				display: block;
+				margin-left: auto;
+				margin-right: 10px;
+				width: 160px;
+				height: 20px;
+				font-size: 12px;
+				border: solid 1px;
+				text-align: center;
+				padding-top: 3px;
+			}
+		</style>
+		<script type="text/javascript">
+			function demoTime(){
+				var d=new Date();
+				var s=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+				var span=document.getElementById("spanDate");
+				span.innerText=s;
+			}
+			//任何函数之外(自动执行)
+			setInterval("demoTime()",1000);
+		</script>
+	</head>
+	<body>
+		<span id="spanDate"></span>
+	</body>
+</html>

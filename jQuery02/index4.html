@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#button").click(function(){
+					//$("span").empty();
+					//$("h1").remove();
+					//$("h1").detach();
+					
+					$("span").after($("h1:first").clone());
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<span>
+			<h1>你</h1>
+			<h1>好</h1>
+			<h1>世</h1>
+			<h1>界</h1>
+		</span>
+		
+		<button id="button">按钮</button>
+	</body>
+</html>

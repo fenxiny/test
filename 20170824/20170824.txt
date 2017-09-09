@@ -1,0 +1,49 @@
+1:web.xml文件中配置DispatcherServlet Springmvc 核心控制器
+   Servlet(load-on-startup 配置在容器启动的时候初始化) 容器启动完成 springmvc 的核心控制器也启动完毕(等待请求)
+  Servlet-Mapping url-pattern / 任何请求都会请求到当前的Servlet (所有请求都会去执行DispatcherServlet) 根据初始化参数contextConfigLocation springmvc.xml文件地址 加载springmvc.xml文件 根据springmvc.xml文件context:component-scan节点取扫描指定的包下所有的Controller注解标识的类@RequestMapping(/url 映射的请求) 标识方法   映射一个请求 对应一个处理的方法
+
+  
+   DispatcherServlet 等待状态
+   客户端发出一个请求(http://localhost:8080/springmvc/login) 处理请求 截取到/login
+   扫描所有的@RequestMapping(url) 客户端的请求是否和哪一个@RequestMapping标识的方法匹配 调用匹配方法
+   方法执行完毕后会String返回  拿到String封装成ModelAndView对象 Model数据渲染到request的Attibute 交给视图解析器
+   添加前缀+返回的字符串+后缀 视图响应客户端
+
+ 写JSP页面 页面产生的请求 Controller 处理 @ReqeustMapping
+
+
+
+ MyBatis ORM 持久框架
+
+ 持久化 数据库  对象(内存) --> 数据库(磁盘数据)  内存数据 保存在 磁盘 持久化
+ IO
+
+ mybatis-config.xml文件 (环境的配置(数据源的环境) 持久化对象的映射(别名映射) mapper文件(SQL语句)的映射)
+ Resource.getInputStream(mybatis-config.xml)
+ SqlSessionFactoryBuilder-->SqlSessionFactory(创建SqlSession的工厂) --> openSession()-->SqlSession(Connection) 数据一次会话
+
+ 第一种 DAO Mapper文件 
+ 第二种 DAO接口 Mapper文件  SqlSession.getMapper(IStudentDao.class); 自定生成的DAO实现类
+ 第三种 注解的方法 DAO接口 
+
+
+ 程序的中的Person  类 对应的是 person数据表 
+ 对象   一行记录
+
+ person 外键信息  personId   cardId  关系模型数据
+ 对象 Person 对象  Card对象
+
+
+ select * from person  查询所有的Person数据
+ 1+N 问题
+ select * from card where cardId=1
+ select * from card where cardId=2
+
+ 多对多
+ 动态的SQL
+ 缓存
+ Spring  MyBatis
+ 
+
+
+ 

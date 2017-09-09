@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			function selectDemo(obj){
+				//document.getElementById("userName");
+				alert(obj.value);
+				//JavaScript 事件处理函数(event 默认内置对象 事件对象(事件的源 事件类型 处理函数))
+				//event.srcElement 产生当前事件的事件源
+				alert(event.srcElement.value);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" name="userName" id="userName"  onselect="selectDemo(this);"/>
+		
+	</body>
+</html>

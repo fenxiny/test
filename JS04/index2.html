@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script type="text/javascript">
+			function demo(){
+				document.forms[1].action="http://www.hao123.com";
+				document.forms[1].submit();
+			}
+		</script>
+		
+	</head>
+	<body>
+		<form action="http://www.baidu.com" method="post" name="form1">
+			<input type="submit" value="提交" />
+		</form>
+		<form action="http://www.taobao.com" method="post" name="form2">
+			<input type="submit" value="提交" />
+		</form>
+		<form action="http://www.jd.com" method="post" name="form3">
+			<input type="submit" value="提交" />
+		</form>
+		
+		<input type="button" value="按钮" onclick="demo();" />
+		
+	</body>
+</html>

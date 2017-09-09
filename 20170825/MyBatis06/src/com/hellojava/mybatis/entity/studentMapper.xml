@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="com.hellojava.mybatis.dao.IStudentDao">
+ 	<insert id="save" parameterType="student">
+	insert into student
+	values(default,#{stuName},#{stuSex},#{stuAge},#{classTable.classId})
+	</insert>
+	
+	<resultMap type="student" id="studentResult">
+		<id property="stuId" column="stuId"/>
+		<result property="stuName" column="stuName"/>
+		<result property="stuSex" column="stuSex"/>
+		<result property="stuAge" column="stuAge"/>
+		<association property="classTable" javaType="class">
+			<id property="classId" column="classId"/>
+			<result property="className" column="className"/>
+		</association>
+	</resultMap>
+	
+	<select id="loadAll" resultMap="studentResult">
+		SELECT S.stuId,S.stuName,S.stuSex,S.stuAge,C.classId,C.className
+		  FROM student S INNER JOIN class C 
+		  ON S.cid=C.classId
+	</select>
+	
+	<select id="loadById" resultType="int" resultMap="studentResult">
+		SELECT S.stuId,S.stuName,S.stuSex,S.stuAge,C.classId,C.className
+		  FROM student S INNER JOIN class C 
+		  ON S.cid=C.classId
+		  where S.stuId=#{stuId}
+	</select>
+ </mapper>

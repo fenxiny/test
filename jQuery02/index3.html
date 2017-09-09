@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$("button").click(function(){
+					if($(this).text()=="修改"){
+						$(this).parent().parent().children().each(function(index){
+							if(index>0 && index<4){
+							 	var value=$(this).text();
+							 	$(this).text("");
+							 	var text=$("<input>");
+							 	text.attr("type","text");
+							 	text.attr("value",value);
+							 	$(this).append(text);
+							}
+						});
+					}else{
+						$(this).parent().parent().children().each(function(index){
+							if(index>0 && index<4){
+								var value=$(this).children().val();
+								$(this).text(value);
+							}
+						});
+					}
+					$(this).text($(this).text()=="修改"?"确定":"修改");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<table width="600" height="400" border="1">
+			<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>男</td>
+				<td>22</td>
+				<td><button>修改</button></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>张三1</td>
+				<td>女</td>
+				<td>23</td>
+				<td><button>修改</button></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>张三2</td>
+				<td>男</td>
+				<td>24</td>
+				<td><button>修改</button></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>张三3</td>
+				<td>女</td>
+				<td>22</td>
+				<td><button>修改</button></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>张三4</td>
+				<td>男</td>
+				<td>32</td>
+				<td><button>修改</button></td>
+			</tr>
+		</table>
+	
+	</body>
+</html>

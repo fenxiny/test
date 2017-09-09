@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd"
+	default-autowire="byName">
+	
+	<!--default-autowire="byName" 作用当前xml文件配置的 所有的都可以自动注入 按照bean名称(Id)
+	    当一个bane 有依赖关系那么查看当前的bean的属性的名称是否在springbean容器是否存在一个和当前属性
+	    名称一致的一个bean 则自动把bean注入到当前类中的属性中  -->
+	
+	<bean id="a" class="com.hellojava.entity.A"></bean>
+
+	<bean id="b" class="com.hellojava.entity.B"></bean>
+
+</beans>

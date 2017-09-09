@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>日历级联</title>
+		<script type="text/javascript">
+			function init(){
+				var year=document.getElementById("year");
+				var d=new Date();
+				createOption(1970,d.getFullYear(),year);
+				setDefaultSelect(year.options.length-1,year);//设置默认值
+				var month=document.getElementById("month");
+				createOption(1,12,month);
+				setDefaultSelect(d.getMonth(),month);
+				var date=document.getElementById("date");
+				createOption(1,calctorDate(),date);
+				setDefaultSelect(d.getDate()-1,date);
+			}
+			 //判断一个月有多少天
+			function calctorDate(){
+				var yearValue=parseInt(document.getElementById("year").value);
+				var monthValue=parseInt(document.getElementById("month").value);
+				switch(monthValue){
+					case 1:
+					case 3:
+					case 5:
+					case 7:
+					case 8:
+					case 10:
+					case 12:
+						return 31;
+						break;
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+						return 30;
+						break;
+					case 2:
+					   return isRun(yearValue)?29:28;
+				}
+			}
+			//是否闰年
+			function isRun(year){
+				if((year%4==0 && year%100!=0) ||(year%400==0)){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			
+			//添加可选项
+			function createOption(statr,end,obj){
+				for(var i=statr;i<=end;i++){
+					var op=document.createElement("option");
+					op.value=i;
+					op.innerText=i;
+					obj.options.add(op);
+				}
+			}
+			//设置默认日期
+			function setDefaultSelect(defaultIndex,obj){
+				obj.selectedIndex=defaultIndex;
+			}
+	
+			function monthChange(){
+				var dayCount=calctorDate();
+				var date=document.getElementById("date");
+				var dataCount=date.options.length;
+				if(dayCount!=dataCount){
+					clearDateOption(date);
+					createOption(1,dayCount,date);
+				}
+			}
+			function clearDateOption(obj){
+				var length=obj.options.length;
+				for(var i=0;i<length;i++){
+					obj.options.remove(0);
+				}
+			}
+			
+			function yearChange(){
+				var monthValue=document.getElementById("month").value;
+				var date=document.getElementById("date");
+				if(parseInt(monthValue)==2){
+					clearDateOption(date);
+					var end=calctorDate();
+					createOption(1,end,date);
+				}
+			}
+	
+		</script>
+	</head>
+	<body onload="init()">
+		<select id="year" onchange="yearChange();"></select>年
+		<select id="month" onchange="monthChange()"></select>月
+		<select id="date"></select>日
+		
+	</body>
+</html>

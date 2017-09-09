@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("input[name='all']").change(function(){
+					var bool=this.checked;
+					$("input[name!='all']").each(function(){
+						this.checked=bool;
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="checkbox" name="all" />全选<br />
+		<input type="checkbox" />
+		<input type="checkbox" />
+		<input type="checkbox" />
+		<input type="checkbox" />
+		<input type="checkbox" />
+		<input type="checkbox" />
+	</body>
+</html>

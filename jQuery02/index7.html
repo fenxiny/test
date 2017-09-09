@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#button1").click(function(){
+					$("div").hide(3000,function(){
+						alert("隐藏完毕....");
+					});
+				});
+				
+				$("#button2").click(function(){
+					$("div").show(3000,function(){
+						alert("显示完毕....");
+					});
+				});
+				
+				$("#button3").click(function(){
+					$("div").slideUp(3000,function(){
+						alert("隐藏完毕....");
+					});
+				});
+				$("#button4").click(function(){
+					$("div").slideDown(3000);
+				});
+				
+				$("#button5").click(function(){
+					var bu=$(this);
+					$("div").slideToggle(3000,function(){
+						bu.text(bu.text()=="隐藏"?"显示":"隐藏");
+					});
+				});
+				
+				$("#button6").click(function(){
+					$("div").fadeOut(3000,function(){
+						alert("隐藏完毕....");
+					});
+				});
+				$("#button7").click(function(){
+					$("div").fadeIn(3000);
+				});
+				
+				$("#button8").click(function(){
+					var bu=$(this);
+					$("div").fadeTo(3000,0.2);
+				});
+				$("#button9").click(function(){
+					var bu=$(this);
+					$("div").fadeToggle(3000,function(){
+						bu.text(bu.text()=="隐藏"?"显示":"隐藏");
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div style="margin: auto; width: 400px; height: 300px; border: solid 1px;"></div>
+		<button id="button1">按钮1</button>
+		<button id="button2">按钮2</button>
+		
+		<button id="button3">按钮3</button>
+		<button id="button4">按钮4</button>
+		<button id="button5">隐藏</button>
+		
+		<button id="button6">按钮6</button>
+		<button id="button7">按钮7</button>
+		<button id="button8">按钮8</button>
+		<button id="button9">隐藏</button>
+	</body>
+</html>

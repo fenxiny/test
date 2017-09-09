@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#button").click(function(){
+					//标签选择器
+					$("input").each(function(index){
+						//JavaScript 对象
+						//this.value="hello"+index;
+						//把JavaScript转换成jQuery对象
+						$(this).val("hello"+index);
+						//Jquery对象转换成JavaScript对象
+						//$(this).get(0)
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="text"  />
+		<input type="text" />
+		<button type="button" id="button">按钮</button>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function checkForm(obj){
+				var email=obj.elements[2].value;
+				//字符和数字
+				var regEmail=/^.{1,}@\w{1,}\.\w{1,}$/;
+				
+				alert(regEmail.test(email));
+				
+				return false;
+			}
+		</script>
+	</head>
+	<body>
+		<form action="http://www.taobao.com" method="post" onsubmit="return checkForm(this);">
+			用户名:<input type="text" name="userName" /><br />
+			密码<input type="password" name="userPwd" /><br />
+			邮箱:<input type="text" name="userEmail"/><br />
+			<input type="submit" value="提交" />
+			<input type="reset" value="取消" />
+		</form>
+	</body>
+</html>

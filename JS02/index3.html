@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function focusDemo(obj){
+				if(obj.value=="请输入用户名..."){
+					obj.value="";
+					obj.style.color="#000000";
+				}
+			}
+			
+			function blurDemo(obj){
+				if(obj.value==""){
+					obj.style.color="#dddddd";
+					obj.value="请输入用户名...";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div style="margin: auto; margin-top: 100px; width: 300px; height: 200px; border: solid 1px;">
+			<form action="" method="post">
+				<table style="width: 300px; height: 200px;">
+					<tr>
+						<td align="right">用户名:</td>
+						<td>
+							<input type="text" name="userName" value="请输入用户名..." style="color: #dddddd;" onfocus="focusDemo(this)" onblur="blurDemo(this)"/>
+						</td>
+						<td>
+							<span id="userNameInfo"></span>
+						</td>
+					</tr>
+					<tr>
+						<td align="right">密码:</td>
+						<td>
+							<input type="text" name="userName" />
+						</td>
+						<td>
+							<span id="userNameInfo"></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" align="right">
+							<input type="submit" value="登录" />
+							<input type="reset" value="取消" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,167 @@
+<jsp:useBean id="user" class="com.hellojava.web.entity.User" scope="page"></jsp:useBean>
+	<jsp:setProperty property="userId" name="user" value="1"/>
+	<jsp:setProperty property="userName" name="user" value="admin"/>
+	<jsp:setProperty property="userPwd" name="user" value="a111"/>
+	
+	<jsp:getProperty property="userId" name="user"/>
+	<jsp:getProperty property="userName" name="user"/>
+	<jsp:getProperty property="userPwd" name="user"/>
+
+
+<!-- property="bean属性名称" name="某个范围的attribute key" value="值"
+	     param 和 value 属性不能同时出现 
+	     param 利用请求参数的key 填充当前bean的属性-->
+	<jsp:setProperty property="userId" name="user" param="uid"/>
+	<jsp:setProperty property="userName" name="user" param="uname"/>
+	<jsp:setProperty property="userPwd" name="user" param="upwd"/>
+
+
+<!-- 转发到指定的页面 -->
+	<jsp:forward page="index1.jsp">
+		<jsp:param value="a111" name="str"/>
+	</jsp:forward>
+
+<!-- JSP 动作包含 -->
+	<jsp:include page="index1.jsp">
+		<jsp:param value="b222" name="str"/>
+	</jsp:include>
+
+http://localhost:8080/JSP04/index3.jsp?uname=asdasd&sid=1&sid=3
+
+http://localhost:8080/JSP04/index3.jsp?uname=asdasd&sid=1&sid=2&sid=3
+
+sid 一个key  多个value
+
+
+${1+2*3}<br/>
+	${param.uname} -- request.getParameter("uname")
+	${paramValues.sid[2]}  request.getParameterValues("sid")
+	${header.host}
+
+param   parameter
+paramValues  parameterValues
+header  header
+headerValues  headerValues
+表达式 
+cookie  cookie
+
+${uname} 默认到某个范围Attribute  默认page --> request --> session  --> application
+${pageScope.uname}
+${requestScope.uname}
+${sessionScope.uname}
+${applicationScope.uname}
+
+
+JSTL （Java通用核心标签库）
+
+第三方 包
+
+host---localhost:8080
+connection---keep-alive
+cache-control---max-age=0
+upgrade-insecure-requests---1
+user-agent---Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36 OPR/46.0.2597.61
+accept---text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+referer---http://localhost:8080/JSP04/index2.jsp?uname=admin&sid=1&sid=2&sid=3
+accept-encoding---gzip, deflate, br
+accept-language---zh-CN,zh;q=0.8
+cookie---JSESSIONID=B6F7257C381A0178A199BE95E1275318
+
+sid
+accept  集合
+accept-encoding
+
+输出(支持EL表达式)
+<c:out value="${param.uname}"></c:out>
+
+异常处理 会把catch标签内部出现的异常 存储在e变量
+<c:catch var="e">
+		<%
+			int i=0;
+		    int j=10/i;
+		%>
+	</c:catch>
+	
+<c:out value="${e}"></c:out>
+
+switch
+<c:choose>
+case 
+		<c:when test="${param.week==1}">
+			星期一
+		</c:when>
+		<c:when test="${param.week==2}">
+			星期二
+		</c:when>
+		<c:when test="${param.week==3}">
+			星期三
+		</c:when>
+		<c:when test="${param.week==4}">
+			星期四
+		</c:when>
+		<c:when test="${param.week==5}">
+			星期五
+		</c:when>
+		<c:when test="${param.week==6}">
+			星期六
+		</c:when>
+		<c:when test="${param.week==7}">
+			星期天
+		</c:when>
+default
+		<c:otherwise>
+			输入错误
+		</c:otherwise>
+	</c:choose>
+
+
+<%
+		List<String> list=new ArrayList<>();
+		for(int i=0;i<10;i++){
+			list.add("hello"+(i+1));
+		}
+		pageContext.setAttribute("listStr", list);
+	
+%>
+
+foreach 循环
+	<c:forEach items="${pageScope.listStr}" var="s" begin="2" end="9" step="1" varStatus="statu"> 
+		<c:out value="${statu.first}"></c:out>&nbsp;&nbsp;&nbsp;
+		<c:out value="${statu.last}"></c:out>&nbsp;&nbsp;&nbsp;
+		<c:out value="${statu.index}"></c:out>&nbsp;&nbsp;&nbsp;
+		<c:out value="${statu.count}"></c:out>&nbsp;&nbsp;&nbsp;
+		<c:out value="${s}"></c:out><br/>
+	</c:forEach>
+
+
+<%
+		String str="a-b-c-d-e-f-g";
+		pageContext.setAttribute("str", str);
+	%>
+	<c:forTokens items="${pageScope.str}" delims="-" var="s">
+		<c:out value="${s}"></c:out><br/>
+	</c:forTokens>
+
+<c:if test="${param.age>18}">
+		成年人
+	</c:if>
+	<c:if test="${param.age==18 }">
+		hello
+	</c:if>
+	<c:if test="${param.age<18}">
+		未成年人
+	</c:if>
+
+包含
+<c:import url="demo.jsp">
+		<c:param name="uname" value="administrator"></c:param>
+	</c:import>
+跳转
+<c:redirect url="demo.jsp">
+		<c:param name="uname" value="administraotr"></c:param>
+	</c:redirect>
+
+<c:url var="u" value="/demo.jsp" scope="page"></c:url>
+	
+	<c:out value="${u}"></c:out>
+

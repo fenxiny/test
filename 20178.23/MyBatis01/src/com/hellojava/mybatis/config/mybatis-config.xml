@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 配置 -->  
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.hellojava.mybatis.entity.Student" alias="student"/>
+	</typeAliases>
+
+	<!-- 配置的环境集合(多个环境) -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 事务的管理(JDBC 默认的jdbc事务管理)spring 当前交给Spring管理 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 数据源(type="unpool" 标识当前不使用数据连接池技术 POOL使用池)  -->
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/test"/>
+				<property name="username" value="root"/>
+				<property name="password" value="a111"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 配置的SQL的xml导入到当前配置文件中 -->
+	<mappers>
+		<mapper resource="com/hellojava/mybatis/entity/studentMapper.xml"/>
+	</mappers>
+	
+</configuration>

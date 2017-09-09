@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.hellojava.mybatis.dao.IStudentDao">
+	<select id="loadAll" resultType="student">
+		select * from student
+	</select>
+	<!-- 自定义的参数类型 -->
+	<parameterMap type="map" id="loadPageParam">
+		<parameter property="startIndex" javaType="int"/>
+		<parameter property="endIndex" javaType="int"/>
+	</parameterMap>
+	
+	<!-- 一张数据表的操作  具有关系的数据表的操作(一对一 一对多 多对多) -->
+	
+	<select id="loadPage" parameterMap="loadPageParam" resultType="student">
+		select * from student limit #{startIndex},#{endIndex}
+	</select>
+</mapper>

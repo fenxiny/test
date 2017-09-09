@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.hellojava.mybatis.dao.IPersonDao">
+	<resultMap type="person" id="personResult">
+		<id property="personId" column="personId"/>
+		<result property="personName" column="personName"/>
+		<!-- (association)关联对象的映射
+			 property="对象中关联属性的名称"
+			 javaType="返回的数据类型(配置是别名)"
+			 select="管理数据使用哪个查询取查询数据"
+			 column="把第一个查询中的结果集的哪一个列数据给第二个查询"  -->
+		<association property="card" javaType="card"
+			 select="loadAllCard" column="personId">
+			<id property="cardId" column="cardId"/>
+			<result property="cardNumber" column="cardNumber"/>
+		</association>
+	</resultMap>
+	<select id="loadAll" resultMap="personResult">
+		select * from person
+	</select>
+	
+	<select id="loadAllCard" resultType="card" parameterType="int">
+		select * from card where cardId=#{personId}
+	</select>
+	
+	<select id="loadById" resultMap="personResult" parameterType="int">
+		select * from person where personId=#{personId}
+	</select>
+	
+</mapper>

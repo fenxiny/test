@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			var time;
+			var leftIndex,rightIndex;
+			
+			function init(){
+				var bu=event.srcElement;
+				var buValue=bu.innerHTML;
+				bu.innerHTML=bu.innerHTML=="开始"?"停止":"开始";
+				if(buValue=="开始"){
+					demo();
+				}else{
+					iswin();
+				}
+			}
+			
+			function iswin(){
+				if(time!=undefined){
+					clearTimeout(time);
+				}
+				if((leftIndex==0 && rightIndex==1) || (leftIndex==1 && rightIndex==2) || (leftIndex==2 && rightIndex==0)){
+					alert("左边赢了");
+				}else if(leftIndex==rightIndex){
+					alert("平局");
+				}else{
+					alert("右边赢了");
+				}
+			}
+			
+			function demo(){
+				//初始化数组对象
+				//var s=new Array();
+				//for(var i=0;i<5;i++){
+					//s[i]=(i+1)+"";
+				//}
+				//初始化数组并把数组元素存入数组
+				//var s1=new Array("a","b","c","d");
+				//把两个数组链接
+				//var s2=s.concat(s1);
+				//alert(s2.toString());
+				//for(index in s){
+					//alert(s1[index]);
+				//}
+				//用指定的字符把数组的元素链接 
+				//alert(s.join("-"));
+				//反转数组
+				//alert(s.reverse());
+				
+				//alert(s.pop());
+				//alert(s.toString());
+				
+				//添加元素
+				//s.push("6");
+				//alert(s.toString());
+				
+				//alert(s.shift());
+				//alert(s.toString());
+				
+				//alert(s.slice("3"));
+				
+				//var bool=new Boolean(true);
+				//alert(bool.toString()+"false");
+				
+				//var s=Math.abs(-1900);
+				//alert(s+10);
+
+				
+				var images=new Array("img/石头.jpg","img/剪刀.jpg","img/布.jpg");
+				
+				leftIndex=Math.round(Math.random()*10)%3;
+				
+				rightIndex=Math.round(Math.random()*10)%3;
+				
+				var limage=document.getElementById("leftImage");
+				var rimage=document.getElementById("rightImage");
+				
+				limage.src=images[leftIndex];
+				rimage.src=images[rightIndex];
+				
+				time=setTimeout("demo()",100);
+			}
+			
+		</script>
+	</head>
+	<body>
+		<img src="img/default.jpg" width="400" height="400" id="leftImage">
+		VS
+		<img src="img/default.jpg" width="400" height="400" id="rightImage"/>
+		<br/>
+		<button onclick="init()">开始</button>
+	</body>
+</html>

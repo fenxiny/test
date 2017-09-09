@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.hellojava.mybatis.dao.IPersonDao">
+	<!-- 自定义结果类型  type="当前自定义的类型的类型" id="自定义类型的唯一标识"-->
+	<resultMap type="person" id="personResult">
+		<!-- id 映射当前对象的主键(必须有) property="对象属性" column="数据库的列名" -->
+		<id property="personId" column="personId"/>
+		<!-- result 普通属性 -->
+		<result property="personName" column="personName"/>
+		<!-- 关联的对象 property="关联的属性(Person类中关联对象的属性名)" card Person 类中关联的属性card
+		    javaType="card" card标识别名(在mybatis-config.xml文件中 配置别名card) 
+			javaType="属性在Java体系中的类型" -->
+		<association property="card" javaType="card">
+			<id property="cardId" column="cardId"/>
+			<result property="cardNumber" column="cardNumber"/>
+		</association>
+	</resultMap>
+	
+	<select id="loadAll" resultMap="personResult">
+		SELECT P.personId,P.personName,C.cardId,C.cardNumber FROM person P INNER JOIN
+		card C ON P.personId=C.cardId
+	</select>
+	
+	<select id="loadById" resultMap="personResult" parameterType="int">
+		SELECT personId,personName,cardId,cardNumber FROM person INNER JOIN
+			card ON Person.personId=Card.cardId WHERE personId=#{personId}
+	</select>
+</mapper>

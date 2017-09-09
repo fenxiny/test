@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function changeDemo(){
+				var all=event.srcElement;
+				//通过Name得到元素(Name可以重复 数组)
+				var chs=document.getElementsByName("chs");
+				for(var i=0;i<chs.length;i++){
+					chs[i].checked=all.checked;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="checkbox" name="all" onchange="changeDemo();"/>全选<br/>
+		<input type="checkbox" name="chs" />
+		<input type="checkbox" name="chs" />
+		<input type="checkbox" name="chs" />
+		<input type="checkbox" name="chs" />
+		<input type="checkbox" name="chs" />
+		<input type="checkbox" name="chs" />
+		<input type="checkbox" name="chs" />
+	</body>
+</html>

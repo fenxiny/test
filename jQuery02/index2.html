@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				var h=$("<h1>");
+				$("#button").click(function(){
+					//包裹(用创建的h1元素包裹得到的font元素)
+					//$("#font").wrap(h);
+					$("#font").wrapAll(h);
+				});
+				
+				$("#button1").click(function(){
+					$("#font").unwrap(h);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<font id="font" color="red">你好世界</font><br/>
+		<button id="button">按钮</button>
+		<button id="button1">按钮1</button>
+	</body>
+</html>

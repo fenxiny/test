@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#button").click(
+				function(){
+					//var h=$("<h1>");
+					//h.attr("align","center");
+					//h.text("hel	lo");
+					//父容器在前面
+					//$("#div").append(h);
+					//子元素在前面
+					//h.appendTo($("#div"));
+					
+					var lable=$("<lable>");
+					lable.text("hello");
+					//把创建的lable放置当前对象内部元素第一个
+					//$("#div").prepend(lable);
+					//lable.prependTo($("#div"));
+					
+					//表格的排序
+					//$("#span").after(lable);
+					//$("#span").before(lable);
+					
+					//$("#span1").insertAfter($("#span"));
+					//$("#span1").insertBefore($("#span"));
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button id="button">按钮</button>
+		<div id="div" style="border: solid 1px;">
+			<span id="span">helloworld</span></div>
+		<span id="span1">你好世界</span>
+	</body>
+</html>

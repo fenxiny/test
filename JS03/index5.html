@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			count=3;
+			var table;
+			function init(){
+				var div=document.getElementById("rootDiv");
+				div.style.width=(count*100)+"px";
+				div.style.height=(count*100+22)+"px";
+				table=document.createElement("table");
+				table.setAttribute("width",count*100);
+				table.setAttribute("height",count*100);
+				
+				for(var i=0;i<count;i++){
+					var tr=table.insertRow();
+					for(var j=0;j<count;j++){
+     					var td=tr.insertCell();
+     					td.setAttribute("width","100");
+     					td.setAttribute("height","100");
+     					td.setAttribute("bgColor","#000000");
+     					td.setAttribute("id",i+"-"+j);
+     					td.setAttribute("onclick","tdClick()");
+					}
+				}
+				div.appendChild(table);
+			}
+			function tdClick(){
+				var td=event.srcElement;
+				changeBgColor(td.id);
+				var rowIndex=parseInt(td.id.split("-")[0]);
+				var cellIndex=parseInt(td.id.split("-")[1]);
+				if(rowIndex-1>=0){
+					var topId=(rowIndex-1)+"-"+cellIndex;
+					changeBgColor(topId);
+				}
+				if(rowIndex+1<count){
+					var downId=(rowIndex+1)+"-"+cellIndex;
+					changeBgColor(downId);
+				}
+				if(cellIndex-1>=0){
+					var leftId=rowIndex+"-"+(cellIndex-1);
+					changeBgColor(leftId);
+				}
+				if(cellIndex+1<count){
+					var rightId=rowIndex+"-"+(cellIndex+1);
+					changeBgColor(rightId);
+				}
+				if(isWin()){
+					alert("过关了");
+					count++;
+					if (count==9){
+						alert("最后一关了");
+						count--;
+					}
+					clearDivChild();
+					init();
+				}
+			}
+			
+			function changeBgColor(id){
+				var td=document.getElementById(id);
+				td.bgColor=td.bgColor=="#000000"?"#ffffff":"#000000";
+			}
+			
+			function isWin(){
+				var bool=true; 
+				var tds=document.getElementsByTagName("td");
+				for(var i=0;i<tds.length;i++){
+					if(tds[i].bgColor=="#000000"){
+						return false;
+					}
+				}
+				return bool;
+			}
+			
+			function clearDivChild(){
+				var div=document.getElementById("rootDiv");
+				if(table!=undefined)
+					div.removeChild(table);
+			}
+			function demo(){
+				var tds=document.getElementsByTagName("td");
+				for(var i=0;i<tds.length;i++){
+					tds[i].bgColor="#ffffff";
+				}
+				if(isWin()){
+					alert("过关了");
+					clearDivChild();
+					count++;
+					if (count==9){
+						alert("最后一关了");
+						count--;
+					}
+					init();
+				}
+			}
+			function ch(){
+				var index=document.getElementById("guanKa");
+				alert(index.value);
+				count=parseInt(index.value)+3;
+				clearDivChild();
+				init();
+			}
+		</script>
+	</head>
+	<body onload="init();">
+		
+		<div id="rootDiv" style="margin: auto; border: solid 1px;"></div>
+		<input type="button" onclick="demo()" value="按钮" />
+		第<select id="guanKa" onchange="ch()">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<!--<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>-->
+		</select>关
+	</body>
+</html>

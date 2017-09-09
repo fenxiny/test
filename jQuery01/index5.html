@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#button").click(function(){
+					//获得到lable后第一个元素(返回一个元素)
+					//$("lable + input").val("你好");
+					//alert($("lable + input").length);
+					//获得lable后所有的元素(返回数组)
+					//$("lable ~ input").val("你好");
+					//alert($("lable ~ input").length);
+					//过滤当前选择器返回的集合中的第一个元素
+					//$("lable ~ input:first").val("hello");
+					//过滤当前选择器返回的集合中的最后一个元素
+					//$("lable ~ input:last").val("hello");
+					//$("input").val("hello");
+					//获得所有的input元素 过滤掉 不是button的所有元素
+					//$("input:not(:button)").val("hello");
+					
+					//$("input:even").val("hello");
+					//$("input:odd").val("hello");
+					//equals(0) 判断索引为0
+					//$("input:eq(0)").val("hello");
+					//获得选择器集合中索引小于2的所有元素
+					//$("input:lt(2)").val("hello");
+					//获得选择器集合中索引大于2的所有元素
+					//$("input:gt(2)").val("hello");
+					//获得选择器集合中属性type=text的所有元素
+					//$("input[type='text']").val("你好世界");
+					//$("input:text").val("你好世界");
+					//属性值不等于
+					//$("input[value!='按钮']").val("hello");
+					//模糊匹配(判断属性值是按开始)
+					//$("input[value^='按']").val("hello");
+					//匹配属性值结束的字符
+					//$("input[value$='钮']").val("hello");
+					
+					$("input[value*='钮']").val("hello");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<lable>hello</lable>
+		<input type="text" />
+		<input type="text" />
+		<input type="text" />
+		<input type="button" value="按钮" id="button" />
+	</body>
+</html>

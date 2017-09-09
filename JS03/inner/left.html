@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function demo(){
+				//parent 窗口 当前窗口的父窗口
+				//parent.location.href="../index1.html";
+				//top 窗口对象 当前窗口的顶层窗口
+				//top.location.href="../index1.html";
+				
+				//parent 父窗口 frame 
+				//parent.frames[0].location.href="../index1.html";
+				parent.frames['mytop'].location.href="../index1.html";
+			}
+		</script>
+	</head>
+	<body>
+		<h1>left</h1>
+		<a href="../index.html" target="mytop">index</a>
+		<button type="button" onclick="demo();">按钮</button>
+	</body>
+</html>

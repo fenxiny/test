@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.post("loadAllServlet",function(data){
+			var json=eval(data);
+			var tab=$("<table>");
+			tab.attr("width","100%");
+			var t=$("<tr align='center'>");
+			var con=$("<input type='checkbox' name='all' id='all'/>");
+			con.change(function(){
+				var bool=this.checked;
+				$(":checkbox[name='ids']").each(function(){
+					this.checked=bool;
+				});
+			});
+			var con1=$("<label>编号</label>")
+			var ttd=$("<td></td>");
+			ttd.append(con);
+			ttd.append(con1);
+			t.append(ttd);
+			t.append($("<td>名称</td>"));
+			t.append($("<td>作者</td>"));
+			t.append($("<td>价格</td>"));
+			t.append($("<td>信息</td>"));
+			tab.append(t);
+			for(var i=0;i<json.length;i++){
+				var tr=$("<tr align='center'>");
+				for(var j=0;j<5;j++){
+					var td=$("<td>");
+					switch(j){
+					case 0:
+						var chk=$("<input type='checkbox' name='ids' value="+json[i].bookId+">")
+						var label=$("<lable>"+json[i].bookId+"</label>");
+						td.append(chk);
+						td.append(label);
+						break;
+					case 1:
+						td.text(json[i].bookName);
+						break;
+					case 2:
+						td.text(json[i].bookAuthor);
+						break;
+					case 3:
+						td.text(json[i].bookPrice);
+						break;
+					case 4:
+						td.text(json[i].bookInfo);
+						break;
+					}
+					tr.append(td);
+				}
+				tab.append(tr);
+			}
+			s
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<div id="dd" style="margin: auto; width: 600px; border: solid 1px;">
+	</div>
+</body>
+</html>

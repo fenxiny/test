@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.chk{
+				display: block;
+				margin: 100px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.0.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#button").click(function(){
+					//1.xxx 版本起作用 3.xxx 不起作用
+					//attr() prop() prop() 操作元素只需要定义的属性
+					$("#chk").prop("checked",true);
+				});
+				$("#button1").click(function(){
+					$("#chk").removeProp("checked");
+				});
+				
+				$("#button2").click(function(){
+					//添加一个存在的样式表(必须使用class选择器)
+					$("#chk").addClass("chk");
+				});
+				
+				$("#button3").click(function(){
+					$("#chk").removeClass("chk");
+				});
+				
+				$("#button4").click(function(){
+					$("#chk").toggleClass("chk");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="checkbox" id="chk"/>
+		<input type="button" id="button" value="按钮" />
+		<input type="button" id="button1" value="按钮1" />
+		<input type="button" id="button2" value="按钮2" />
+		<input type="button" id="button3" value="按钮3" />
+		<input type="button" id="button4" value="按钮4" />
+	</body>
+</html>

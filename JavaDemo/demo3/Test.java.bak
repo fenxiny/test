@@ -1,0 +1,11 @@
+public class Test 
+{
+	public static void main(String[] args) 
+	{
+		Teacher t=new Teacher();
+		t.method("张三");
+
+		Teacher t1=new Teacher();
+		t1.method("李四");
+	}
+}

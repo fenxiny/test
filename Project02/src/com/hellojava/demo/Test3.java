@@ -1,0 +1,12 @@
+package com.hellojava.demo;
+import java.io.RandomAccessFile;
+import java.io.IOException;
+public class Test3{
+	public static void main(String[] args)throws IOException{
+		RandomAccessFile randomAccess=new RandomAccessFile("E:\\hello.txt","rwd");
+		long length=randomAccess.length();
+		randomAccess.seek(length);
+		randomAccess.writeChars("helloworld");
+		randomAccess.close();
+	}
+}

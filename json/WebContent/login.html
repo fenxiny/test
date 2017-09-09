@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#buttonSubmit").click(function(){
+			$.post("loginServlet",{userName:$(":text").val(),userPwd:$(":password").val()},function(data){
+				if(data==1){
+					location.href="index.html";
+				}else{
+					alert("用户名或密码错误");
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- 客户端和服务器完全分离 服务器只是提供业务处理 处理完 导航应该客户端 -->
+	账号:<input type="text" name="userName"/><br/>
+	密码:<input type="password" name="userPwd"><br/>
+	<input type="button" value="确定" id="buttonSubmit"/>
+</body>
+</html>

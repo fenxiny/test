@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function demo(){
+				//按照DOM模型 级别
+				window.document.form1.userName.value="你好世界";
+				window.document.form1.button.value="helloworld";
+				demo1();
+			}
+			//事件(JavaScript 事件驱动的语言)
+			//事件(事件源 事件类型 事件处理函数)
+			//函数(function 定义) 函数功能分为两类:1:事件处理函数 2:普通函数
+			function demo1(){
+				alert("demo1");
+			}
+		</script>
+	</head>
+	<body>
+		<form action="" method="post" name="form1">
+			<input type="text" name="userName" />
+			<input type="button" value="按钮" name="button" onclick="demo();"/>
+		</form>
+	</body>
+</html>
